@@ -1,0 +1,4 @@
+name: basic-auth-check
+summary: Interface to the basic-auth-service
+version: 1
+repo: github.com:CanonicalLtd/juju-interface-basic-auth-check

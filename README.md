@@ -1,11 +1,13 @@
 # Juju interface for basic-auth-service
 
-This is a Juju interface interface for the
-(basic-auth-service)[https://github.com/CanonicalLtd/basic-auth-service]
+This is a Juju interface interface for
+the [basic-auth-service](https://github.com/CanonicalLtd/basic-auth-service)
 application.
 
-It can be used to relate an application with the with the basic-auth-service
-(charm)[https://github.com/CanonicalLtd/basic-auth-service-charm], and it provides hostnames and ports for the related units.
+It can be used to relate an application with the with the
+basic-auth-service
+[charm](https://github.com/CanonicalLtd/basic-auth-service-charm), and it
+provides hostnames and ports for the related units.
 
 The interface provides a `basic-auth-check.available` which can be used as
 follow:

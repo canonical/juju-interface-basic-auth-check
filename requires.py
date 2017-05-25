@@ -33,14 +33,15 @@ class BasicAuthCheckRequires(RelationBase):
     def backends(self):
         """Returns available targets as a list of (hostname, port) tuples."""
         backends = []
-        for conv in self.conversations():
-            if conv.scope is None:
-                continue
 
-            host = conv.get_local('hostname')
-            port = conv.get_local('port')
-            if host and port:
-                backends.append((host, port))
+        relation_name = self.conversation().relation_name
+        for relid in hookenv.relation_ids(relation_name):
+            for unit in hookenv.related_units(relid=relid):
+                data = hookenv.relation_get(unit=unit, rid=relid)
+                host = data.get('hostname')
+                port = data.get('port')
+                if host and port:
+                    backends.append((host, port))
         return backends
 
     def _check_state_changed(self, conv):

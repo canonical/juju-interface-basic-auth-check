@@ -17,7 +17,7 @@ The interface provides the following states:
 An example of use in a service related to basic-auth-service is
 
 ```python
-@when('basic-auth-check.changed)
+@when('basic-auth-check.changed')
 def basic_auth_check_available(basic_auth_check):
     for hostname, port in basic_auth_check.backends():
         configure_my_service(hostname, int(port))

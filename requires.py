@@ -33,8 +33,12 @@ class BasicAuthCheckRequires(RelationBase):
     def backends(self):
         """Returns available targets as a list of (hostname, port) tuples."""
         backends = []
+        for conv in self.conversations():
+            backends.extend(self._relation_backends(conv.relation_name))
+        return backends
 
-        relation_name = self.conversation().relation_name
+    def _relation_backends(self, relation_name):
+        backends = []
         for relid in hookenv.relation_ids(relation_name):
             for unit in hookenv.related_units(relid=relid):
                 data = hookenv.relation_get(unit=unit, rid=relid)

@@ -31,10 +31,10 @@ class BasicAuthCheckRequires(RelationBase):
         hookenv.log('basic-auth-check relation is gone')
 
     def backends(self):
-        """Returns available targets as a list of (hostname, port) tuples."""
-        backends = []
+        """Return available targets as a set of (hostname, port) tuples."""
+        backends = set()
         for conv in self.conversations():
-            backends.extend(self._relation_backends(conv.relation_name))
+            backends.update(self._relation_backends(conv.relation_name))
         return backends
 
     def _relation_backends(self, relation_name):

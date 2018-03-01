@@ -11,9 +11,9 @@ class BasicAuthCheckProvides(RelationBase):
     scope = scopes.UNIT
 
     class states(bus.StateList):
-        available = bus.State('{relation_name}.available')
-        configured = bus.State('{relation_name}.configured')
-        changed = bus.State('{relation_name}.changed')
+        available = '{relation_name}.available'
+        configured = '{relation_name}.configured'
+        changed = '{relation_name}.changed'
 
     @hook('{provides:basic-auth-check}-relation-{joined,changed}')
     def changed(self):
